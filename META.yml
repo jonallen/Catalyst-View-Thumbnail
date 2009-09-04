@@ -26,4 +26,5 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   homepage: http://perl.jonallen.info/projects/catalyst-view-thumbnail
+  repository: http://github.com/jonallen/Catalyst-View-Thumbnail/tree/master
 version: 0.01
