@@ -20,7 +20,7 @@ no_index:
     - t
 requires:
   Catalyst::View: 0
-  Image::Size: 0
+  Image::Info: 0
   Imager: 0
   parent: 0
 resources:

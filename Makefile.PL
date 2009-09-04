@@ -9,7 +9,7 @@ homepage   'http://perl.jonallen.info/projects/catalyst-view-thumbnail';
 
 requires 'parent'          => 0;
 requires 'Catalyst::View'  => 0;
-requires 'Image::Size'     => 0;
+requires 'Image::Info'     => 0;
 requires 'Imager'          => 0;
 
 build_requires 'Test::More';
