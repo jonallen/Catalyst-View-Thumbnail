@@ -1,0 +1,29 @@
+---
+abstract: 'Catalyst view to resize images'
+author:
+  - 'Jon Allen (JJ) <jj@jonallen.info>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 0.91'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Catalyst-View-Thumbnail
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  Catalyst::View: 0
+  Image::Size: 0
+  Imager: 0
+  parent: 0
+resources:
+  license: http://dev.perl.org/licenses/
+  homepage: http://perl.jonallen.info/projects/catalyst-view-thumbnail
+version: 0.01

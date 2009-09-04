@@ -1,0 +1,63 @@
+NAME
+    Catalyst::View::Thumbnail - Catalyst view to resize images for
+    thumbnails
+
+SYNOPSIS
+    Create a thumbnail view:
+
+        script/myapp_create view Thumbnail Thumbnail
+
+    Then in your controller:
+
+        sub thumbnail :Local :Args(1) {
+            my ($self, $c, $image_id) = @_;
+        
+            my $image_obj = $c->model('MyApp::Images')->find({id=>$image_id})
+              or $c->detach('/default');
+        
+            $c->stash->{x}     = 100;    # Create a 100px square thumbnail
+            $c->stash->{y}     = 100;
+            $c->stash->{image} = $image_obj->data;
+        
+            $c->forward('View::Thumbnail');
+        }
+
+DESCRIPTION
+    Catalyst::View::Thumbnail resizes images to produce thumbnails, with
+    options to set the desired x or y dimensions (or both), and specify a
+    zoom level and scaling type.
+
+    Full documentation is available after installation by typing
+    
+        perldoc Catalyst::View::Thumbnail
+
+INSTALLATION
+    To install this module, run the following commands:
+
+        perl Makefile.PL
+        make
+        make test
+        make install
+
+SEE ALSO
+    Catalyst::View::Thumbnail tutorial (with examples):
+    http://perl.jonallen.info/writing/articles/creating-thumbnails-with-catalyst
+
+AUTHOR
+    Jon Allen (JJ) - http://perl.jonallen.info
+
+SUPPORT
+    Commercial support, customisation, and training for this module is
+    available from Penny's Arcade Limited - contact info@pennysarcade.co.uk
+    for details.
+
+COPYRIGHT & LICENSE
+    Copyright (C) 2009 Jon Allen (JJ).
+
+    This module is free software; you can redistribute it and/or modify it
+    under the same terms as Perl 5.10.0. For more details, see the full text
+    of the licenses in the directory LICENSES.
+
+    This module is distributed in the hope that it will be useful, but it is
+    provided “as is” and without any express or implied warranties.
+
