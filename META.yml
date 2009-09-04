@@ -1,5 +1,5 @@
 ---
-abstract: 'Catalyst view to resize images'
+abstract: 'Catalyst view to resize images for thumbnails'
 author:
   - 'Jon Allen (JJ) <jj@jonallen.info>'
 build_requires:
@@ -24,7 +24,7 @@ requires:
   Imager: 0
   parent: 0
 resources:
-  license: http://dev.perl.org/licenses/
   homepage: http://perl.jonallen.info/projects/catalyst-view-thumbnail
+  license: http://dev.perl.org/licenses/
   repository: http://github.com/jonallen/Catalyst-View-Thumbnail/tree/master
 version: 0.01
