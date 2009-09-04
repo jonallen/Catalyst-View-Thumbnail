@@ -60,21 +60,32 @@ sub render_image {
   }
   
   if ($c->stash->{x} or $c->stash->{y}) {
+    $c->log->debug('Creating thumbnail image');
     my $source_aspect = $image->getwidth / $image->getheight;
+    $c->log->debug('Source width: ' . $image->getwidth . ' height: ' . $image->getheight . ' aspect ratio: ' . $source_aspect);
     $c->stash->{x}  ||= $c->stash->{y} * $source_aspect;
     $c->stash->{y}  ||= $c->stash->{x} / $source_aspect;
+
+    $c->log->debug('Target width: ' . $c->stash->{x} . ' height: ' . $c->stash->{y});
     
     unless ($c->stash->{scaling} eq 'fit') {
       my $thumbnail_aspect = $c->stash->{x} / $c->stash->{y};
+      $c->log->debug('Thumbnail aspect ratio: ' . $thumbnail_aspect);
       
       if ($source_aspect > $thumbnail_aspect) {
+        $c->log->debug('Cropping image to fit aspect ratio of thumbnail');
+        $c->log->debug('Source aspect > thumbnail aspect');
+        $c->log->debug('Cropping to width: '.$image->getheight * $thumbnail_aspect.' x height: '.$image->getheight);
         $image = $image->crop(
-          width  => $image->getheight / $thumbnail_aspect,
+          width  => $image->getheight * $thumbnail_aspect,
           height => $image->getheight,
         ) or return $image->errstr;
       }
       
       if ($source_aspect < $thumbnail_aspect) {
+        $c->log->debug('Cropping image to fit aspect ratio of thumbnail');
+        $c->log->debug('Source aspect < thumbnail aspect');
+        $c->log->debug('Cropping to width: '.$image->getwidth.' x height: '.$image->getwidth / $thumbnail_aspect);
         $image = $image->crop(
           width  => $image->getwidth,
           height => $image->getwidth / $thumbnail_aspect,
@@ -82,6 +93,7 @@ sub render_image {
       }
     }
     
+    $c->log->debug('Scaling image to thumbnail');
     $image = $image->scale(
       xpixels => $c->stash->{x},
       ypixels => $c->stash->{y},
