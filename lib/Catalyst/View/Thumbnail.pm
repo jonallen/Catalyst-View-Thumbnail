@@ -13,7 +13,7 @@ Catalyst::View::Thumbnail - Catalyst view to resize images for thumbnails
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub process {
   my ($self, $c) = @_;
