@@ -24,7 +24,7 @@ sub process {
   # or an error message on failure.
   
   if (UNIVERSAL::isa($image, 'Imager')) {
-    my $mime_type = image_info(\$c->stash->{image})->{file_media_type};
+    my $mime_type = $c->stash->{image_type} || image_info(\$c->stash->{image})->{file_media_type};
     (my $file_type = $mime_type) =~ s!^image/!!;
 
     my $thumbnail;
