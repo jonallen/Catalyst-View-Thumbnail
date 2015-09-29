@@ -2,6 +2,8 @@ Revision history for Catalyst-View-Thumbnail
 
 {{ $NEXT }}
 
+0.03      2015-09-29 10:18:23 BST
+
         * Allow the overriding of the generated image file type via $c->stash->{image_type}.
 
           This allows you to set all thumbnails generated to jpegs for example.
