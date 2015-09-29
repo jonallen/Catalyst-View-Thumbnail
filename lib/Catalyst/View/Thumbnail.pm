@@ -24,7 +24,7 @@ sub process {
   # or an error message on failure.
   
   if (UNIVERSAL::isa($image, 'Imager')) {
-    my $mime_type = image_info(\$c->stash->{image})->{file_media_type};
+    my $mime_type = $c->stash->{image_type} || image_info(\$c->stash->{image})->{file_media_type};
     (my $file_type = $mime_type) =~ s!^image/!!;
 
     my $thumbnail;
@@ -194,6 +194,14 @@ the source image as necessary.
 =back
 
 This parameter is optional, and will default to 'fill' if omitted.
+
+=item image_type
+
+Mime type for the output image.  This is normally the same as the input image.
+If you set this the Imager library will produce an image of that format.  This
+is useful when you want to convert something like a tiff to a jpeg.  Note
+that the conversions can be strange so this may not be a good idea for all images.
+See the C<Imager> documentation for more details.
 
 =back
 
